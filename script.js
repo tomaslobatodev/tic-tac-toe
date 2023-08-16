@@ -10,7 +10,7 @@ const gameBoard = (() => {
 
     let boardElement = document.querySelector('.board');
 
-    board.forEach((item, index) => {
+    board.forEach(() => {
         const box = document.createElement('div');
         box.className = 'box';
         boardElement.appendChild(box);
@@ -18,7 +18,6 @@ const gameBoard = (() => {
 
     Array.from(boardElement.children).forEach((box, index) => {
         box.addEventListener('click', () => {
-            // display active player marker
             box.classList.add(game.activePlayer.marker);
             box.setAttribute('data', game.activePlayer.marker);
             box.textContent = game.activePlayer.marker
@@ -68,7 +67,6 @@ const game = (() => {
         [2,4,6],
     ];
 
-    // check winner
     function checkWinner() {
         winningAxes.forEach((item, index) => {
             if (gameBoard.board[item[0]] === this.activePlayer.marker && gameBoard.board[item[1]] === this.activePlayer.marker && gameBoard.board[item[2]] === this.activePlayer.marker) {
